@@ -1,22 +1,26 @@
 import React from 'react';
 
-function ExpenseRow({ expense, deleteExpense }) {
-  return (
-    <tr>
-      <td className="border px-4 py-2">{expense.description}</td>
-      <td className="border px-4 py-2">{expense.category}</td>
-      <td className="border px-4 py-2">${expense.amount}</td>
-      <td className="border px-4 py-2 text-center">
-        <button
-          onClick={() => deleteExpense(expense.id)}
-          className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700"
-          aria-label="Delete expense"
-        >
-          Delete
-        </button>
-      </td>
-    </tr>
-  );
-}
-
-export default ExpenseRow;
+function ExpenseRow({ expense, isEven }) {
+    return (
+      <tr className={isEven ? 'bg-white' : 'bg-gray-50'}>
+        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+          {expense.name}
+        </td>
+        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+          {expense.description}
+        </td>
+        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+          {expense.category}
+        </td>
+        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+          {expense.amount}
+        </td>
+        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-right">
+          {expense.date}
+        </td>
+      </tr>
+    );
+  }
+  
+  export default ExpenseRow;
+  

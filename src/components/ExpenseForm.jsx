@@ -1,70 +1,105 @@
 import React, { useState } from 'react';
 
 function ExpenseForm({ addExpense }) {
-  const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
-  const [amount, setAmount] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!description || !category || !amount) return;
-
-    const newExpense = {
-      id: Date.now(),
-      description,
-      category,
-      amount: parseFloat(amount).toFixed(2),
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [category, setCategory] = useState('');
+    const [amount, setAmount] = useState('');
+    const [date, setDate] = useState('');
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      if (!name || !description || !category || !amount || !date) return;
+  
+      const newExpense = {
+        id: Date.now(),
+        name,
+        description,
+        category,
+        amount: amount,
+        date,
+      };
+  
+      addExpense(newExpense);
+  
+      setName('');
+      setDescription('');
+      setCategory('');
+      setAmount('');
+      setDate('');
     };
-
-    addExpense(newExpense);
-
-    setDescription('');
-    setCategory('');
-    setAmount('');
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="mb-4 p-4 border rounded shadow">
-      <div className="mb-2">
-        <label htmlFor="description" className="block font-semibold mb-1">Description</label>
-        <input
-          id="description"
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className="w-full border rounded px-2 py-1"
-          required
-        />
+  
+    return (
+      <div className="p-6 text-left bg-gray-200 shadow-md rounded-lg border-gray-200">
+        <h2 className="text-xl font-bold mb-2">Add Expense</h2>
+        <p className="text-gray-600 text-sm mb-6">Enter your expense details below</p>
+        
+        <form onSubmit={handleSubmit} className="space-y-8">
+          <div>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter expense name"
+              className="w-70 p-2 border border-gray-300 rounded text-sm"
+              required
+            />
+          </div>
+          
+          <div>
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Enter expense description"
+              className="w-70 p-2 border border-gray-300 rounded text-sm"
+              required
+            />
+          </div>
+  
+          <div>
+            <input
+              type="text"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              placeholder="Enter expense category"
+              className="w-70 p-2 border border-gray-300 rounded text-sm"
+              required
+            />
+          </div>
+  
+          <div>
+            <input
+              type="number"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              placeholder="Enter amount"
+              className="w-70 p-2 border border-gray-300 rounded text-sm"
+              required
+            />
+          </div>
+  
+          <div>
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className="w-middle  p-2 border border-gray-300 rounded text-sm"
+              required
+            />
+          </div>
+  
+          <button
+            type="submit"
+            className="w-middle bg-black text-white p-2 rounded font-medium hover:bg-gray-800 mt-2"
+            style={{color: 'white', backgroundColor: 'black'}}
+          >
+            Submit
+          </button>
+        </form>
       </div>
-      <div className="mb-2">
-        <label htmlFor="category" className="block font-semibold mb-1">Category</label>
-        <input
-          id="category"
-          type="text"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          className="w-full border rounded px-2 py-1"
-          required
-        />
-      </div>
-      <div className="mb-2">
-        <label htmlFor="amount" className="block font-semibold mb-1">Amount</label>
-        <input
-          id="amount"
-          type="number"
-          step="0.01"
-          min="0"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-          className="w-full border rounded px-2 py-1"
-          required
-        />
-      </div>
-      <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-        Add Expense
-      </button>
-    </form>
-  );
-}
-
-export default ExpenseForm;
+    );
+  }
+  
+  export default ExpenseForm;
+  
