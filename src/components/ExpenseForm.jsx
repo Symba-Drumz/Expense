@@ -30,11 +30,12 @@ function ExpenseForm({ addExpense }) {
     };
   
     return (
-      <div className="p-6 text-left bg-gray-200 shadow-md rounded-lg border-gray-200">
-        <h2 className="text-xl font-bold mb-2">Add Expense</h2>
-        <p className="text-gray-600 text-sm mb-6">Enter your expense details below</p>
+
         
-        <form onSubmit={handleSubmit} className="space-y-8">
+        
+        <form onSubmit={handleSubmit} className="form">
+          <h2 className="text-xl font-bold mb-2">Add Expense</h2>
+        <p className="text-gray-600 text-sm mb-6">Enter your expense details below</p>
           <div>
             <input
               type="text"
@@ -97,7 +98,7 @@ function ExpenseForm({ addExpense }) {
             Submit
           </button>
         </form>
-      </div>
+      
     );
   }
   
