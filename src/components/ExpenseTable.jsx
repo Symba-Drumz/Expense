@@ -3,32 +3,32 @@ import ExpenseRow from './ExpenseRow';
 
 function ExpenseTable({ expenses }) {
     if (expenses.length === 0) {
-      return <p className="text-center mt-4">No expenses to display.</p>;
+      return <p >No expenses to display.</p>;
     }
   
     return (
-      <div className="mt-4 overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-black">
+      <div className=" table ">
+        <table >
+          <thead>
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+              <th >
                 Expense
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+              <th >
                 Description
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+              <th >
                 Category
               </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-white uppercase tracking-wider">
+              <th >
                 Amount
               </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-white uppercase tracking-wider">
+              <th >
                 Date
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody >
             {expenses.map((expense, index) => (
               <ExpenseRow
                 key={expense.id}

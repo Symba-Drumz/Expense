@@ -63,7 +63,7 @@ function App() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className=" box min-h-screen bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 py-8">
         <Header />
         <div className="flex gap-6 mt-8">
@@ -73,7 +73,7 @@ function App() {
             </div>
           </div>
           <div className="w-2/3">
-            <div className="bg-white rounded shadow-sm p-6">
+            <div className=" container bg-white rounded shadow-sm p-6">
               <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
               <ExpenseTable expenses={filteredExpenses} deleteExpense={deleteExpense} />
             </div>
